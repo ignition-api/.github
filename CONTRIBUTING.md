@@ -1,12 +1,6 @@
 # Contributing to ignition-api
 
-As a contributor, here are the guidelines we would like you to follow:
-
-- [Code of Conduct](#code-of-conduct)
-- [Got a question?](#got-a-question)
-- [Issues and Bugs](#found-a-bug)
-- [Creating a Pull Request](#pull-requests)
-- [Style Guide](#style-guide)
+We follow a simple model to make contributing as straightforward as possible. These guidelines allow us to streamline the development process and achieve greater transparency.
 
 ## Code of Conduct
 
@@ -25,13 +19,137 @@ If you find a bug or if something is missing in the source code, you can help us
 In **ignition-api** we use the [GitHub flow](https://guides.github.com/introduction/flow/) as main versioning workflow.
 
 1. Fork the repository
-1. Create a new branch for each feature, fix or improvement
+1. Create a new branch from **main** for each feature, fix or improvement, using the following naming convention:
+    1. `feat/scope/feature-name` when introducing a new feature
+    1. `fix/scope/fix-name` when fixing an existing issue
+    1. `docs/change` for documentation changes
+    1. `chore/chore-desc` for miscellaneous changes
+1. Make sure to install [`pre-commit`](https://pre-commit.com/) and run our pre-commit hooks and apply our [Coding Style](#coding-style).
+1. Add your commits to the branch following our [Commit Message Format](#commit-message-format)
 1. Send a pull request from each feature branch to the **main** branch
 
 It is very important to separate new features or improvements into separate feature branches, and to send a pull request for each branch.
 
 This allows us to review and pull in new features or improvements individually.
 
-## Style Guide
+## Coding style
 
-All pull requests SHOULD adhere to the [Conventional Commits specification](https://conventionalcommits.org/).
+We use the [Black code style](https://github.com/psf/black/blob/main/docs/the_black_code_style/index.rst), but also rely on other tools.
+
+## Commit Message Format
+
+We have very precise rules over how our Git commit messages must be formatted.
+This format leads to **easier to read commit history**.
+
+Each commit message consists of a **header**, a **body**, and a **footer**, trying to adhere to the ["50/72 rule"](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
+
+```text
+<header>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+The `header` is mandatory and must conform to the [Conventional Commits specification](https://conventionalcommits.org/).
+Additionally, we recommend trying to keep the `header` to a maximum of 50 characters.
+
+The `body` is mandatory for all commits except for those of type "docs".
+When the body is present it should be wrapped at 72 characters.
+
+The `footer` is optional. The [Commit Message Footer](#commit-footer) format describes what the footer is used for and the structure it must have.
+
+## Commit message header
+
+```text
+<type>(<scope>): <summary>
+```
+
+The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is optional.
+
+### Type
+
+Must be one of the following:
+
+* **build**: Changes that affect the build system or external dependencies (example scope: `deps`)
+* **chore**: Other changes that don't modify src or test files
+* **ci**: Changes to our CI configuration files and scripts
+* **docs**: Documentation only changes
+* **feat**: A new feature (example scopes: `ia`, `java`, `javax`, `org`, `system`)
+* **fix**: A bug fix (example scopes: same as **feat**)
+* **perf**: A code change that improves performance
+* **refactor**: A code change that neither fixes a bug nor adds a feature (example scopes: same as **feat**)
+* **revert**: Reverts a previous commit
+* **style**: Changes that do not affect the meaning of the code (white-space, formatting, etc.)
+* **test**: Adding missing tests or correcting existing tests
+
+### Scope
+
+The `scope` should be the name of the Python package affected.
+
+The following is the list of supported scopes:
+
+* **ia**: for changes to the `com.inductiveautomation` package
+* **java**: for changes to the `java` package
+* **javax**: for changes to the `javax` package
+* **org**: for changes to the `org` package
+* **system**: for changes to the `system` package
+
+There are currently a few exceptions to the "use package name" rule:
+
+* **cliff**: used for changes to our `cliff.toml` file
+* **deps**: for updating dependencies for our CI scripts. This is mainly used by `dependabot` and `pre-commit.ci`
+* **release**: used for creating a new release
+* none/empty string: useful for changes that are done across all packages (e.g. `style: use black style`) and for docs changes that are not related to a specific package (e.g. `docs: fix typo in README`).
+
+## Summary
+
+Use the summary field to provide a succinct description of the change:
+
+* use the imperative, present tense: "change" not "changed" nor "changes"
+* don't capitalize the first letter
+* no dot (.) at the end
+
+Example Conventional Commit message:
+
+```text
+refactor(ia): improve Version comparison logic
+```
+
+## Commit Message Footer
+
+The footer can contain information about breaking changes and deprecations and is also the place to reference GitHub issues, and other PRs that this commit closes or is related to.
+For example:
+
+```text
+BREAKING CHANGE: <breaking change summary>
+<BLANK LINE>
+<breaking change description + migration instructions>
+<BLANK LINE>
+<BLANK LINE>
+Fixes #<issue number>
+```
+
+or
+
+```text
+DEPRECATED: <what is deprecated>
+<BLANK LINE>
+<deprecation description + recommended update path>
+<BLANK LINE>
+<BLANK LINE>
+Closes #<pr number>
+```
+
+Breaking Change section should start with the phrase "BREAKING CHANGE: " followed by a summary of the breaking change, a blank line, and a detailed description of the breaking change that also includes migration instructions.
+
+Similarly, a Deprecation section should start with "DEPRECATED: " followed by a short description of what is deprecated, a blank line, and a detailed description of the deprecation that also mentions the recommended update path.
+
+## Revert commits
+
+If the commit reverts a previous commit, it should begin with `revert:`, followed by the header of the reverted commit.
+
+The content of the commit message body should contain:
+
+* information about the SHA of the commit being reverted in the following format: `This reverts commit <SHA>`,
+* a clear description of the reason for reverting the commit message.
