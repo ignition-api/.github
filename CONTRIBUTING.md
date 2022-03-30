@@ -57,7 +57,7 @@ Additionally, we recommend trying to keep the `header` to a maximum of 50 charac
 The `body` is mandatory for all commits except for those of type "docs".
 When the body is present it should be wrapped at 72 characters.
 
-The `footer` is optional. The [Commit Message Footer](#commit-footer) format describes what the footer is used for and the structure it must have.
+The `footer` is optional. The [Commit Message Footer](#commit-message-footer) format describes what the footer is used for and the structure it must have.
 
 ## Commit message header
 
@@ -72,12 +72,12 @@ The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is opti
 Must be one of the following:
 
 * **build**: Changes that affect the build system or external dependencies (example scope: `deps`)
-* **chore**: Other changes that don't modify src or test files
+* **chore**: Other changes that don't modify src or test files (example scopes: `cliff`, `release`)
 * **ci**: Changes to our CI configuration files and scripts
 * **docs**: Documentation only changes
 * **feat**: A new feature (example scopes: `ia`, `java`, `javax`, `org`, `system`)
 * **fix**: A bug fix (example scopes: same as **feat**)
-* **perf**: A code change that improves performance
+* **perf**: A code change that improves performance (example scopes: same as **feat**)
 * **refactor**: A code change that neither fixes a bug nor adds a feature (example scopes: same as **feat**)
 * **revert**: Reverts a previous commit
 * **style**: Changes that do not affect the meaning of the code (white-space, formatting, etc.)
@@ -153,3 +153,11 @@ The content of the commit message body should contain:
 
 * information about the SHA of the commit being reverted in the following format: `This reverts commit <SHA>`,
 * a clear description of the reason for reverting the commit message.
+
+Example:
+
+```text
+revert(ci): remove condition from job
+
+Refs: 2a50de4
+```
