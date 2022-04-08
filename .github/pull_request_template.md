@@ -2,7 +2,7 @@
 
 Please check if your PR fulfills the following requirements:
 
-- [ ] The commit message follows our [commit message format](https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#commit-message-format=).
+- [ ] The commit message follows our [commit message format](https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#commit-message-format).
 
 ## PR Type
 
@@ -25,6 +25,7 @@ What kind of change does this PR introduce?
 Issue Number: N/A
 
 ## What is the new behavior?
+<!-- Please describe the new behavior. -->
 
 ## Does this PR introduce a breaking change?
 
