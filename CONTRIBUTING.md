@@ -93,6 +93,7 @@ The following is the list of supported scopes:
 * **java**: for changes to the `java` package
 * **javax**: for changes to the `javax` package
 * **org**: for changes to the `org` package
+* **pip**: for changes to Python Packaging files (`pyproject.toml`, `setup.cfg`, `setup.py`)
 * **system**: for changes to the `system` package
 
 There are currently a few exceptions to the "use package name" rule:
