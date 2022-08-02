@@ -71,11 +71,11 @@ The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is opti
 
 Must be one of the following:
 
-* **build**: Changes that affect the build system or external dependencies (example scope: `deps`)
-* **chore**: Other changes that don't modify src or test files (example scopes: `cliff`, `release`)
-* **ci**: Changes to our CI configuration files and scripts
+* **build**: Changes that affect the build system or external dependencies (example scope: `deps`, `pip`)
+* **chore**: Other changes that don't modify src or test files (example scopes: `release`)
+* **ci**: Changes to our CI configuration files and scripts (example scope: `pip`)
 * **docs**: Documentation only changes
-* **feat**: A new feature (example scopes: `ia`, `java`, `javax`, `org`, `system`)
+* **feat**: A new feature (example scopes: `ia`, `java`, `javax`, `org`, `system`, `thecesrom`)
 * **fix**: A bug fix (example scopes: same as **feat**)
 * **perf**: A code change that improves performance (example scopes: same as **feat**)
 * **refactor**: A code change that neither fixes a bug nor adds a feature (example scopes: same as **feat**)
@@ -95,11 +95,12 @@ The following is the list of supported scopes:
 * **org**: for changes to the `org` package
 * **pip**: for changes to Python Packaging files (`pyproject.toml`, `setup.cfg`, `setup.py`)
 * **system**: for changes to the `system` package
+* **thecesrom**: for changes to the `dev.thecesrom` package
 
 There are currently a few exceptions to the "use package name" rule:
 
-* **cliff**: used for changes to our `cliff.toml` file
 * **deps**: for updating dependencies for our CI scripts. This is mainly used by `dependabot` and `pre-commit.ci`
+* **pip**: for changes to `setup.[cfg|py]`, or the package publishing workflow
 * **release**: used for creating a new release
 * none/empty string: useful for changes that are done across all packages (e.g. `style: use black style`) and for docs changes that are not related to a specific package (e.g. `docs: fix typo in README`).
 
