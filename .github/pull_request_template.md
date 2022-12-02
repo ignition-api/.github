@@ -2,7 +2,9 @@
 
 Please check if your PR fulfills the following requirements:
 
-- [ ] The commit message follows our [commit message format](https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#commit-message-format).
+- [ ] The commit message follows our [commit message format](https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#commit-message-format)
+- [ ] All applicable pre-commit hooks have passed when running `pre-commit run --all-files`
+- [ ] All `tox` tests have succeeded
 
 ## PR Type
 
